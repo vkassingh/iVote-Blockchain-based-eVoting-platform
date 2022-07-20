@@ -1,0 +1,97 @@
+https://www.dappuniversity.com/articles/solidity-tutorial
+ 
+
+app.js
+
+controllers/   voterController.js   candidateController.js
+
+models/ voterSchema.js  candidateSchema.js
+
+public
+
+routes folder: voter.js candidate.js company.js
+
+views
+
+config.js- db.js
+
+contract - election.sol 
+
+routes file
+
+
+signup/  companySignup.html 
+
+login/ companyLogin.html voterLogin.html
+
+
+1. declare the solidity lang version
+pragma solidity ^0.4.24;
+
+2. create contract
+contract Election{
+
+//all things here
+
+}
+
+3. data types and data structures
+string public value;
+bool public myBool= true;
+int public myInt =1;
+uint public myUint =1;  //unsigned int is alw pos
+
+Enums: to track enumerated list
+
+structs : create your own data types
+struct Person{
+string _firstName;
+string _lastName;
+}
+
+Array :  store person struct in people array
+Person[] public people;
+
+mappings: store key: value pairs like hashtable
+
+mapping(uint => Person) public people;
+key is uint and value is Person and mapping name is people;
+
+4. functions, access modiefiers
+function fnName() visibility{
+}
+
+modifiers: to give special permissions to functions. like the admin can only trigger some function like addCandidate.
+
+modifier onlyAdmin(){
+require(msg.sender== owner);
+}
+
+modifierKeyword modifierName
+with msg.sender to access the current account thats calling the function.
+if exprsion inside require is true, then only code executes
+
+constructor
+constructor() public {
+owner= msg.sender;
+}
+
+5. Events : to deal with async nature of blockchain.
+event Purchase(
+  address _buyer,
+  uint _amount
+);
+
+indexed: to listen for events relevant to our acount
+event Purchase(
+  address indexed _buyer,
+  uint _amount
+);
+
+
+
+
+
+
+
+
